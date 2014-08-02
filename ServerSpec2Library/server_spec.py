@@ -1,5 +1,6 @@
 import subprocess
 from robot.libraries.BuiltIn import BuiltIn
+from robot.utils import asserts
 from paramiko import client
 
 
@@ -25,15 +26,13 @@ class ServerSpec2Library(object):
 
     def should_return_exit_status(self, stdout, expected_code):
         code = stdout.channel.recv_exit_status()
-        if code != int(expected_code):
-            raise AssertionError('expect code %s but was %s' % (expected_code, code))
+        asserts.assert_equals(int(expected_code), code)
 
     def should_return_stdout(self, stdout, expected_output):
         output = stdout.readline()
-        if output != expected_output:
-            raise AssertionError('expect output %s but was %s' % (expected_output, output))
+        asserts.assert_equals(expected_output, output)
 
     def should_return_stderr(self, stderr, expected_output):
         output = stderr.readline()
-        if output != expected_output:
-            raise AssertionError('expect output %s but was %s' % (expected_output, output))
+        asserts.assert_equals(expected_output, output)
+
