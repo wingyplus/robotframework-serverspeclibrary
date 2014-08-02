@@ -24,3 +24,9 @@ class ServerSpec2Library(object):
         code = stdout.channel.recv_exit_status()
         if code != int(expected_code):
             raise AssertionError('expect code %s but was %s' % (expected_code, code))
+
+    def should_return_stdout(self, stdout, expected_output):
+        output = stdout.readline()
+        if output == expected_output:
+            raise AssertionError('expect output %s but was %s' % (expected_code, output))
+
