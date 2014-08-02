@@ -27,6 +27,6 @@ class ServerSpec2Library(object):
 
     def should_return_stdout(self, stdout, expected_output):
         output = stdout.readline()
-        if output == expected_output:
-            raise AssertionError('expect output %s but was %s' % (expected_code, output))
+        if output != expected_output:
+            raise AssertionError('expect output %s but was %s' % (expected_output, output))
 

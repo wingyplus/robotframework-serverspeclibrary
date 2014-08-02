@@ -11,5 +11,5 @@ List Files
 
 Host Name
     Connect To Server  hostname=192.168.33.10  username=vagrant  password=vagrant
-    Command  hostname  Should Return Stdout  vagrant
+    Command  hostname  Should Return Stdout  vagrant\n
     Close Connection
