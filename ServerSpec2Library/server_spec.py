@@ -37,8 +37,9 @@ class ServerSpec2Library(object):
         asserts.assert_equals(expected_output, output)
 
     def package(self, name, keyword, *args):
-        package = True
-        self.builtin.run_keyword(keyword, package, *args)
+        _, stdout, _ = self.client.exec_command("dpkg-query -f '${Status}' --show vim | grep -E '^install ok installed'")
+        found_package = stdout.readline() != ''
+        self.builtin.run_keyword(keyword, name, found_package)
 
-    def should_be_installed(self, package, *args):
-        asserts.fail_if_none(package)
+    def should_be_installed(self, name, found_package):
+        asserts.fail_unless(found_package, 'Package %s not found.' % name)
