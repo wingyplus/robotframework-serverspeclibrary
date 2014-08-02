@@ -11,3 +11,7 @@ Run Command And Expect Return Exit Status
 
 Run Command And Expect Return Stdout
     Command  hostname  Should Return Stdout  vagrant\n
+
+
+Run Command And Expect Return Stder
+    Command  ls foo  Should Return Stderr  ls: cannot access foo: No such file or directory\n

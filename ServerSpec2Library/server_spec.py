@@ -17,8 +17,11 @@ class ServerSpec2Library(object):
         self.client.close()
 
     def command(self, cmd, name, *args):
-        _, stdout, _ = self.client.exec_command(cmd)
-        self.builtin.run_keyword(name, stdout, *args)
+        _, stdout, stderr = self.client.exec_command(cmd)
+        if name == 'Should Return Stdout':
+            self.builtin.run_keyword(name, stdout, *args)
+        else:
+            self.builtin.run_keyword(name, stderr, *args)
 
     def should_return_exit_status(self, stdout, expected_code):
         code = stdout.channel.recv_exit_status()
@@ -30,3 +33,7 @@ class ServerSpec2Library(object):
         if output != expected_output:
             raise AssertionError('expect output %s but was %s' % (expected_output, output))
 
+    def should_return_stderr(self, stderr, expected_output):
+        output = stderr.readline()
+        if output != expected_output:
+            raise AssertionError('expect output %s but was %s' % (expected_output, output))
