@@ -1,0 +1,26 @@
+import subprocess
+from robot.libraries.BuiltIn import BuiltIn
+from paramiko import client
+
+
+class ServerSpec2Library(object):
+    def __init__(self):
+        self.client = None
+        self.builtin = BuiltIn()
+
+    def connect_to_server(self, hostname, username, password):
+        self.client = client.SSHClient()
+        self.client.load_system_host_keys()
+        self.client.connect(hostname=hostname, username=username, password=password)
+
+    def close_connection(self):
+        self.client.close()
+
+    def command(self, cmd, name, *args):
+        _, stdout, _ = self.client.exec_command(cmd)
+        self.builtin.run_keyword(name, stdout, *args)
+
+    def should_return_exit_status(self, stdout, expected_code):
+        code = stdout.channel.recv_exit_status()
+        if code != int(expected_code):
+            raise AssertionError('expect code %s but was %s' % (expected_code, code))
