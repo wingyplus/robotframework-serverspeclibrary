@@ -36,3 +36,9 @@ class ServerSpec2Library(object):
         output = stderr.readline()
         asserts.assert_equals(expected_output, output)
 
+    def package(self, name, keyword, *args):
+        package = True
+        self.builtin.run_keyword(keyword, package, *args)
+
+    def should_be_installed(self, package, *args):
+        asserts.fail_if_none(package)
