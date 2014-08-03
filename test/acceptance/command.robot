@@ -5,13 +5,13 @@ Test TearDown  Close Connection
 
 
 *** Test Cases ***
-Run Command And Expect Return Exit Status
+Run Command Successful
     Command  ls  Should Return Exit Status  0
 
 
-Run Command And Expect Return Stdout
+Run Command And Return Output
     Command  hostname  Should Return Stdout  vagrant\n
 
 
-Run Command And Expect Return Stder
+Run Command And Return Error Output
     Command  ls foo  Should Return Stderr  ls: cannot access foo: No such file or directory\n

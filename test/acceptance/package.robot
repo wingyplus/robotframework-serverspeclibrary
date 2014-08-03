@@ -5,5 +5,5 @@ Test Teardown   Close Connection
 
 
 *** Test Cases ***
-Server Should Installed Package 'vim'
+VIM on Server
     Package  vim  Should Be Installed
