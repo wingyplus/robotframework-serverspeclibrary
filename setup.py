@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 print find_packages()
 
 setup(
-    name = 'Robot Framework ServerSpec 2 Library',
+    name = 'Robot Framework ServerSpec Library',
     version = '0.1',
     description = 'Server spec on Robot Framework inspired from Serverspec on Ruby',    packages = find_packages(),
     keywords = 'serverspec robotframework robot',
