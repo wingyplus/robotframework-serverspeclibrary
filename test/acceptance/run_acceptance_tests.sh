@@ -1,7 +1,7 @@
 #!/bin/sh
 
-export PYTHONPATH=`pwd`
+export PYTHONPATH="`pwd`/src"
 
-vagrant up
-pybot ./test/acceptance/command.robot
+vagrant up --provision
+pybot ./test/acceptance/
 vagrant halt
