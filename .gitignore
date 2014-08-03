@@ -52,3 +52,14 @@ coverage.xml
 # Sphinx documentation
 docs/_build/
 
+
+# vagrant information
+.vagrant
+
+# virtualenv folder
+local/
+
+# robotframework reports
+log.html
+output.xml
+report.html
