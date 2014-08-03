@@ -1,4 +1,3 @@
-import subprocess
 from robot.libraries.BuiltIn import BuiltIn
 from robot.utils import asserts
 from paramiko import client
