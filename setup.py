@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name = 'robotframework-serverspeclibrary',
-    version = '0.1',
+    version = '0.2',
     description = 'Server spec on Robot Framework inspired from Serverspec on Ruby',
     url = 'https://github.com/wingyplus/robotframework-serverspeclibrary',
     keywords = 'serverspec robotframework robot',
