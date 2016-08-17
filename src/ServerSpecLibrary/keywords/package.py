@@ -9,7 +9,7 @@ class PackageKeyword(object):
         self.builtin.run_keyword(keyword, name, found_package)
 
     def should_be_installed(self, name, found_package):
-        asserts.fail_unless(found_package, 'Package %s not found.' % name)
+        asserts.assert_true(found_package, 'Package %s not found.' % name)
 
     def should_not_be_installed(self, name, found_package):
-        asserts.fail_if(found_package, 'Found package %s' % name)
+        asserts.assert_false(found_package, 'Found package %s' % name)
