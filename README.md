@@ -1,2 +1,2 @@
-robotframework-serverspec2library
+robotframework-serverspeclibrary
 =================================
